@@ -1,0 +1,102 @@
+main {
+	margin-top: 20vh;
+}
+
+.dark-mode-element {
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+
+.icon {
+	vertical-align: -0.4em;
+}
+
+.card-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	text-align: right;
+	float: right;
+	clear: right; /* Ensures that elements after the div won't wrap around it */
+}
+
+.typewriter {
+	font-family: monospace;
+	font-size: 25px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+	border-right: 0.09em solid rgb(14, 143, 143);
+	position: relative;
+	letter-spacing: 0.09em;
+	animation: typing 15s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+	0%,
+	50%,
+	100% {
+		width: 0%;
+	}
+	25%,
+	75% {
+		width: 100%;
+	}
+}
+
+@keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent;
+	}
+	50% {
+		border-color: rgb(14, 143, 143);
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes slide-from-right {
+	from {
+		transform: translateX(30px);
+	}
+}
+
+@keyframes slide-to-left {
+	to {
+		transform: translateX(-30px);
+	}
+}
+
+/**
+ * slide animation if prefers-reduced-motion is not set,
+ * else default cross-fade animation
+ */
+@media (prefers-reduced-motion: no-preference) {
+	:root::view-transition-old(root) {
+		animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+			300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+	}
+
+	:root::view-transition-new(root) {
+		animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+			300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+	}
+}

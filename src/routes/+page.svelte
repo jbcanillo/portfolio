@@ -1,2 +1,28 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  import { makeGreet, showClock } from "$lib/scripts/functions";
+ 
+  let greetings = "";
+  let today = "";
+  setInterval(() => {
+    greetings = makeGreet();
+    today = showClock();
+  }, 1000);
+</script>
+
+<article>
+  <div id="greetings" class="pull-left">
+    <h4>{greetings}!</h4>
+  </div>
+  <div id="today" class="pull-right">
+    <h6>{today}</h6>
+  </div>
+</article>
+
+<style>
+  #greetings {
+    font-style: italic;
+  }
+  #today {
+    margin-right: 15px;
+  }
+</style>
